@@ -6,11 +6,7 @@ define ["Phaser", "player"], (Phaser, Player) ->
       @player = new Player(game, 20, 20)
       game.add.existing @player
       console.dir @player.isActor
+      @cursor = game.input.keyboard.createCursorKeys()
     update: ->
-      sprites = game.world.children
-      # Do checks
-      for sprite in sprites
-        # only actors allowed
-        return unless sprite.isActor
-        
+      @player.updateMovement @cursor
   return exports
