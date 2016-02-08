@@ -1,5 +1,5 @@
-"use strict"
 define ["Phaser", "Actor"], (Phaser, Actor) ->
+  "use strict"
   exports = class Player extends Actor 
     defaultBounceSpeed: 300
     defaultMovementSpeed: 200
@@ -11,6 +11,7 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       @body.onBeginContact.add @whenBeginContact
       @bounceSpeed = @defaultBounceSpeed
       @movementSpeed = @defaultMovementSpeed
+
     whenBeginContact: (a, b, c, d) =>
       if @body.velocity.y < 0
         @body.velocity.y = @bounceSpeed
@@ -19,7 +20,13 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       console.log @bounceSpeed
     # k is cursor keys
     updateMovement: (k) =>
-      if k.left.isDown
+      # m is key mappings
+      m = Phaser.Keyboard
+      if k.isDown m.LEFT
         @body.velocity.x = -@movementSpeed
-      else if k.right.isDown
+      else if k.isDown m.RIGHT
         @body.velocity.x = @movementSpeed
+      else if (k.isDown m.SPACEBAR) and @game.global.spacebarReset
+        @body.velocity.x = 0
+      else if @game.global.autoReset
+        @body.velocity.x = 0

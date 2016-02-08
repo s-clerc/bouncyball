@@ -12,6 +12,8 @@ require ["Phaser", "boot", "load", "menu", "play"], (Phaser, boot, load, menu, p
     debug: on
     width: 500
     height: 350
+    spacebarReset: on
+    autoReset: on
   window.game = new Phaser.Game(global.width, global.height, Phaser.AUTO, "gameDiv")
   game.global = global
   # Define states
