@@ -7,6 +7,8 @@ define ["Phaser"], (Phaser) ->
       loadingLabel = @game.add.text(game.world.centerX, 150, "loading...",
         font: "30px Arial"
         fill: "#ffffff")
+      game.load.image "tileset", "assets/tileset.png"
+      game.load.tilemap "map", "assets/tilemap.json", null, Phaser.Tilemap.TILED_JSON
       loadingLabel.anchor.setTo 0.5, 0.5
       # Add a progress bar
       progressBar = @game.add.sprite(game.world.centerX, 200, "progressBar")

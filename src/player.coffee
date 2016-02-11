@@ -11,18 +11,25 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       @body.onBeginContact.add @whenBeginContact
       @bounceSpeed = @defaultBounceSpeed
       @movementSpeed = @defaultMovementSpeed
-
-    whenBeginContact: (a, b, c, d) =>
+    whenBeginContact: (a, b, c, d, e) =>
+      console.dir this
       if @body.velocity.y < 0
         @body.velocity.y = @bounceSpeed
       else if @body.velocity.y > 0
         @body.velocity.y = -@bounceSpeed
-      console.log @bounceSpeed
+      tile = @game.map.getTileWorldXY a.x, a.y
+      if tile.properties.damage > 0
+        @kill()
+        @game.state.start "menu"
+    whenHitRed: (sprite, tile) ->
+      console.log "sprite"
     # k is cursor keys
     updateMovement: (k) =>
       # m is key mappings
       m = Phaser.Keyboard
-      if k.isDown m.LEFT
+      if (k.isDown m.RIGHT) and (k.isDown m.LEFT) and @game.global.spacebarReset
+        @body.velocity.x = 0
+      else if k.isDown m.LEFT
         @body.velocity.x = -@movementSpeed
       else if k.isDown m.RIGHT
         @body.velocity.x = @movementSpeed
