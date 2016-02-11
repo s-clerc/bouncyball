@@ -8,11 +8,12 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       super game, x, y, "circle"
       @game.physics.p2.enable this, game.global.debug
       @body.velocity.y = 300
+      @body.clearShapes()
+      @body.addCircle 16
       @body.onBeginContact.add @whenBeginContact
       @bounceSpeed = @defaultBounceSpeed
       @movementSpeed = @defaultMovementSpeed
     whenBeginContact: (a, b, c, d, e) =>
-      console.dir this
       if @body.velocity.y < 0
         @body.velocity.y = @bounceSpeed
       else if @body.velocity.y > 0
@@ -21,8 +22,6 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       if tile.properties.damage > 0
         @kill()
         @game.state.start "menu"
-    whenHitRed: (sprite, tile) ->
-      console.log "sprite"
     # k is cursor keys
     updateMovement: (k) =>
       # m is key mappings
