@@ -6,6 +6,6 @@ define ["Phaser"], (Phaser) ->
       super game, x, y, key, frame
       @game = game
       @game.physics.p2.enable this, @game.global.debug
+      @game.add.existing this
       @createEvents()
     createEvents: ->
-
