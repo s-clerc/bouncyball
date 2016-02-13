@@ -1,5 +1,6 @@
 "use strict"
 define ["Phaser"], (Phaser) -> 
+  "use strict"
   exports = {}
   exports.BootState = class BootState extends Phaser.State
     preload: ->

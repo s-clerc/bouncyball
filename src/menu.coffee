@@ -1,5 +1,6 @@
 "use strict"
 define ["Phaser"], (Phaser) -> 
+  "use strict"
   exports = {}
   exports.MenuState = class MenuState extends Phaser.State
     create: ->

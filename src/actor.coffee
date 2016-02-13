@@ -1,5 +1,5 @@
-"use strict"
 define ["Phaser"], (Phaser) ->
+  "use strict"
   exports = class Actor extends Phaser.Sprite
     isActor: yes
     constructor: (game, x, y, key, frame) ->

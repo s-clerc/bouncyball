@@ -1,4 +1,5 @@
 define ["Phaser" ,"Actor"], (Phaser, Actor) ->
+  "use strict"
   exports = class Foe extends Actor
     speed: 125
     constructor: (game, x, y) ->

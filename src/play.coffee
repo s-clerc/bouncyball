@@ -1,5 +1,6 @@
 "use strict"
 define ["Phaser", "player", "foe"], (Phaser, Player, Foe) -> 
+  "use strict"
   exports = {}
   exports.PlayState = class PlayState extends Phaser.State
     create: ->
