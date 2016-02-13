@@ -17,6 +17,7 @@ define ["Phaser"], (Phaser) ->
       # Load all assets
       @game.load.spritesheet "mute", "assets/muteButton.png", 28, 22
       @game.load.image "circle", "assets/circle.png"
+      @game.load.image "foe", "assets/foe.png"
       # ...
       return
     create: ->
