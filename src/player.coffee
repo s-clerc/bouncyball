@@ -6,27 +6,36 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
     constructor: (game, x, y, key, frame) ->
       @game = game
       super game, x, y, "circle"
-      @game.physics.p2.enable this, game.global.debug
-      @body.velocity.y = 300
+      @game.add.existing this
       @body.clearShapes()
-      @body.addCircle 16
+      @body.addCircle 15
       @body.onBeginContact.add @whenBeginContact
+      @body.data.gravityScale = 0
       @bounceSpeed = @defaultBounceSpeed
       @movementSpeed = @defaultMovementSpeed
+      @body.velocity.y = @bounceSpeed
     whenBeginContact: (a, b, c, d, e) =>
+      @body.data.gravityScale = 0
       if @body.velocity.y < 0
         @body.velocity.y = @bounceSpeed
       else if @body.velocity.y > 0
-        @body.velocity.y = -@bounceSpeed
-      tile = @game.map.getTileWorldXY a.x, a.y
-      if tile.properties.damage > 0
+        @body.velocity.y = -@bounceSpeed 
+      tile = @game.map.getTileWorldXY a.x, a.y if a
+      if tile
+        if tile.properties.damage > 0
+          @kill()
+          @game.state.start "menu"
+      else
         @kill()
         @game.state.start "menu"
     # k is cursor keys
-    updateMovement: (k) =>
+    update: =>
       # m is key mappings
+      k = @game.input.keyboard
       m = Phaser.Keyboard
-      if (k.isDown m.RIGHT) and (k.isDown m.LEFT) and @game.global.spacebarReset
+      if (k.isDown m.RIGHT) and
+         (k.isDown m.LEFT) and 
+         @game.global.spacebarReset
         @body.velocity.x = 0
       else if k.isDown m.LEFT
         @body.velocity.x = -@movementSpeed
