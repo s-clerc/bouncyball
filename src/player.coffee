@@ -23,11 +23,9 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       tile = @game.map.getTileWorldXY a.x, a.y if a
       if tile
         if tile.properties.damage > 0
-          @kill()
-          @game.state.start "menu"
+          @die()
       else
-        @kill()
-        @game.state.start "menu"
+        @die()
     # k is cursor keys
     update: =>
       # m is key mappings
@@ -39,9 +37,18 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         @body.velocity.x = 0
       else if k.isDown m.LEFT
         @body.velocity.x = -@movementSpeed
+        @scale.setTo(-1, 1);
       else if k.isDown m.RIGHT
         @body.velocity.x = @movementSpeed
       else if (k.isDown m.SPACEBAR) and @game.global.spacebarReset
         @body.velocity.x = 0
       else if @game.global.autoReset
         @body.velocity.x = 0
+    die: ->
+      @game.emitter.x = @x 
+      @game.emitter.y = @y;
+      @game.emitter.start true, 600, null, 15
+      @kill()
+      @game.time.events.add 1000, @startMenu, this
+    startMenu: ->
+      game.state.start "menu"

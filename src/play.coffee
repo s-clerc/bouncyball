@@ -12,6 +12,8 @@ define ["Phaser", "player", "foe"], (Phaser, Player, Foe) ->
       @game.input.keyboard.addKey(Phaser.Keyboard.ESC).onDown.add @end, this
       @game.physics.p2.gravity.y = 500
       @setupCamera()
+      @setupEmitter()
+
     createWorld: ->
       map = game.add.tilemap "map"
       map.addTilesetImage "tileset"
@@ -32,6 +34,21 @@ define ["Phaser", "player", "foe"], (Phaser, Player, Foe) ->
       @game.camera.follow @player
       @game.camera.deadzone = 
         new Phaser.Rectangle((500 - (500/8)) / 2, 0 + 30, 40, height - 50)
+    setupEmitter: ->
+      emitter = game.add.emitter 0, 0, 0, 25
+      emitter.makeParticles ["pixel1", "pixel2"]
+      emitter.setXSpeed 200, -200
+      emitter.setYSpeed 500, -500
+      emitter.minParticleScale = 0.7
+      emitter.maxParticleScale = 1.2
+
+      emitter.minRotation = 0
+      emitter.maxRotation = 100
+
+      emitter.width = 69
+      emitter.height = 42
+      emitter.gravity = 0
+      @game.emitter = emitter
     update: ->
       @player.update()
       #@game.camera.focusOnXY @player.x, 0

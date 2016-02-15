@@ -10,6 +10,9 @@ define ["Phaser"], (Phaser) ->
         fill: "#ffffff")
       game.load.image "tileset", "assets/tileset.png"
       game.load.tilemap "map", "assets/tilemap.json", null, Phaser.Tilemap.TILED_JSON
+      game.load.image "pixel1", "assets/pixel.png"
+      game.load.image "pixel2", "assets/cPixel.png"
+      game.load.image "pixel3", "assets/tPixel.png"
       loadingLabel.anchor.setTo 0.5, 0.5
       # Add a progress bar
       progressBar = @game.add.sprite(game.world.centerX, 200, "progressBar")
