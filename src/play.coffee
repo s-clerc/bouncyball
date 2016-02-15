@@ -7,7 +7,6 @@ define ["Phaser", "player", "foe"], (Phaser, Player, Foe) ->
       window.p = @
       @game = game
       @player = new Player(game, 100, 200)
-      @foe = new Foe(game, 60, 150)
       @createWorld()
       @game.map.setTileIndexCallback 2, @player.whenHitRed
       @game.input.keyboard.addKey(Phaser.Keyboard.ESC).onDown.add @end, this
@@ -22,6 +21,9 @@ define ["Phaser", "player", "foe"], (Phaser, Player, Foe) ->
       @game.physics.p2.convertTilemap map, layer
       @game.map = map
       @game.layer = layer
+      @game.foes = @game.add.group()
+      map.createFromTiles 3, null, "foe", layer, @game.foes
+      Foe.makeFoes @game, @game.foes, @game.map, @game.layer
     setupCamera: ->
       width = @game.global.width
       height = @game.global.height
@@ -32,7 +34,6 @@ define ["Phaser", "player", "foe"], (Phaser, Player, Foe) ->
         new Phaser.Rectangle((500 - (500/8)) / 2, 0 + 30, 40, height - 50)
     update: ->
       @player.update()
-      @foe.update()
       #@game.camera.focusOnXY @player.x, 0
     end: ->
       game.state.start "menu"
