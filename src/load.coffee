@@ -13,6 +13,7 @@ define ["Phaser"], (Phaser) ->
       game.load.image "pixel1", "assets/pixel.png"
       game.load.image "pixel2", "assets/cPixel.png"
       game.load.image "pixel3", "assets/tPixel.png"
+      game.load.image "coin", "assets/coin.png"
       loadingLabel.anchor.setTo 0.5, 0.5
       # Add a progress bar
       progressBar = @game.add.sprite(game.world.centerX, 200, "progressBar")

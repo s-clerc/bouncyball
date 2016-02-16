@@ -20,12 +20,18 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         @body.velocity.y = @bounceSpeed
       else if @body.velocity.y > 0
         @body.velocity.y = -@bounceSpeed 
+      # collide with killer tile
       tile = @game.map.getTileWorldXY a.x, a.y if a
       if tile
         if tile.properties.damage > 0
           @die()
+      # not tile
       else
-        @die()
+        if a.sprite.key == "foe"
+          @die()
+        else
+          @game.coinsCollected += 1
+          a.sprite.kill()
     # k is cursor keys
     update: =>
       # m is key mappings
