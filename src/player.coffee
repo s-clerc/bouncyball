@@ -21,17 +21,20 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       else if @body.velocity.y > 0
         @body.velocity.y = -@bounceSpeed 
       # collide with killer tile
+      return unless a
       tile = @game.map.getTileWorldXY a.x, a.y if a
       if tile
         if tile.properties.damage > 0
           @die()
       # not tile
       else
-        if a.sprite.key == "foe"
+        if a.sprite.tileType == "foe"
           @die()
-        else
+        else if a.sprite.tileType == "coin"
           @game.coinsCollected += 1
           a.sprite.kill()
+        else if a.sprite.tileType == "end"
+          game.state.start "menu"
     # k is cursor keys
     update: =>
       # m is key mappings
@@ -46,6 +49,8 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         @scale.setTo(-1, 1);
       else if k.isDown m.RIGHT
         @body.velocity.x = @movementSpeed
+      else if k.isDown m.UP
+        @body.velocity.y = 0
       else if (k.isDown m.SPACEBAR) and @game.global.spacebarReset
         @body.velocity.x = 0
       else if @game.global.autoReset
@@ -55,6 +60,6 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       @game.emitter.y = @y;
       @game.emitter.start true, 600, null, 15
       @kill()
-      @game.time.events.add 1000, @startMenu, this
-    startMenu: ->
-      game.state.start "menu"
+      @game.time.events.add 700, @restart, this
+    restart: ->
+      @game.state.start "play"

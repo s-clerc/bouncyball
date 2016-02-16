@@ -1,4 +1,4 @@
-define ["Phaser", "Foe", "coin"], (Phaser, Foe, Coin) ->
+define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
   "use strict"
   exports = {}
   exports.load = (game) ->
@@ -28,12 +28,15 @@ define ["Phaser", "Foe", "coin"], (Phaser, Foe, Coin) ->
     objects = map.objects.objects
     for object in objects
       type = object.type
-      if type == "text"
-        makeText game, object, map, layer
-      else if type == "coin"
-        makeCoin game, object, map, layer
-      else
-        console.warn "Undefined object type: " + type
+      switch (object.type)
+        when "text"
+          makeText game, object, map, layer
+        when "coin"
+          makeCoin game, object, map, layer
+        when "endMarker"
+          makeEndMarker game, object, map, layer
+        else
+          console.warn "Undefined object type: " + object.type
   makeText = (game, object) ->
     console.log object.properties.en
     game.add.text object.x, object.y, object.properties.en,
@@ -41,4 +44,15 @@ define ["Phaser", "Foe", "coin"], (Phaser, Foe, Coin) ->
         fill: "#ffffff"
   makeCoin = (game, object) ->
     new Coin(game, object.x, object.y)
+  makeEndMarker = (game, object) ->
+    x = object.x 
+    # correct Y; tiled has the Y on the bottom-left
+    y = object.y + (object.height/2)
+    rect = game.make.bitmapData object.width, object.height
+    rect.ctx.fillStyle = "#ff0000"
+    rect.ctx.fillRect 0, 0, object.width, object.length
+    marker = new Actor(game, x, y, rect)
+    marker.body.data.gravityScale = 0
+    marker.body.static = yes
+    marker.tileType = "end"
   exports

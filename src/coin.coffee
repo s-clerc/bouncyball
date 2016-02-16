@@ -1,6 +1,6 @@
 define ["Phaser", "actor"], (Phaser, Actor) ->
   exports = class Coin extends Actor
-    name: "coin"
+    tileType: "coin"
     constructor: (game, x, y) ->
       @game = game
       super game, x, y, "coin"

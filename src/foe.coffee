@@ -3,6 +3,7 @@ define ["Phaser" ,"Actor"], (Phaser, Actor) ->
   exports = {}
   exports = class Foe extends Actor
     speed: 125
+    tileType: "foe"
     constructor: (game, x, y) ->
       @game = game
       super game, x, y, "foe"
@@ -10,7 +11,7 @@ define ["Phaser" ,"Actor"], (Phaser, Actor) ->
       @body.fixedRotation = yes
       # Negative is towards right
       @speedSet = -200
-      @kinematic= yes
+      @kinematic = yes
     whenBeginContact: (a, b, c, d, e) =>
       return unless a
       direction = Math.atan2 a.x-@x, a.y-@y #rad
