@@ -1,5 +1,5 @@
 "use strict"
-define ["Phaser", "player", "foe", "loadLevel"], (Phaser, Player, Foe, ll) -> 
+define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player, Foe, ll, stats) -> 
   "use strict"
   exports = {}
   exports.PlayState = class PlayState extends Phaser.State
@@ -15,6 +15,7 @@ define ["Phaser", "player", "foe", "loadLevel"], (Phaser, Player, Foe, ll) ->
       @setupCamera()
       @setupEmitter()
       @setupScoreText()
+      @setupStats() if @game.global.debug
     setupCamera: ->
       width = @game.global.width
       height = @game.global.height
@@ -42,10 +43,23 @@ define ["Phaser", "player", "foe", "loadLevel"], (Phaser, Player, Foe, ll) ->
           font: "20px Arial"
           fill: "#ffffff"
       @game.scoreLabel.fixedToCamera = on
+    setupStats: ->
+      stats = new Stats()
+      stats.setMode(0) # 0: fps, 1: ms
+      # Align top-left
+      stats.domElement.style.position = 'absolute'
+      stats.domElement.style.left = '0px'
+      stats.domElement.style.top = '0px'
+      document
+        .getElementById("gameDiv")
+        .appendChild stats.domElement
+      @stats = stats
     update: ->
-      @player.update()
+      @stats.begin() if @game.global.debug
+      @player.update() 
       #@game.camera.focusOnXY @player.x, 0
       @game.scoreLabel.text = "score: " + @game.coinsCollected
+      @stats.end() if @game.global.debug
     end: ->
       game.state.start "menu"
   return exports
