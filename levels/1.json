@@ -282,7 +282,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":39,
+ "nextobjectid":40,
  "orientation":"orthogonal",
  "properties":
     {
@@ -294,7 +294,7 @@
         {
          "columns":3,
          "firstgid":1,
-         "image":"tileset.png",
+         "image":"..\/tileset.png",
          "imageheight":60,
          "imagewidth":60,
          "margin":0,
