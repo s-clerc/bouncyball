@@ -2,7 +2,10 @@ define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
   "use strict"
   exports = {}
   exports.load = (game) ->
-    map = game.add.tilemap "map"
+    # does level exist
+    level = "level" + game.level.number
+    return no unless game.cache.checkTilemapKey level
+    map = game.add.tilemap level
     map.addTilesetImage "tileset"
     layer = map.createLayer "layer"
     layer.resizeWorld()
@@ -11,6 +14,7 @@ define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
     game.map = map
     game.layer = layer
     makeObjects game, game.map, game.layer
+    yes
   #loops through objects layer
   makeObjects = (game, map, layer) ->
     objects = map.objects.objects
@@ -25,7 +29,6 @@ define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
           makeEndMarker game, object, map, layer
         when "foe"
           makeFoe game, object, map, layer
-          console.log "FOE"
         else
           console.warn "Undefined object type: " + object.type
   makeFoe = (game, object) ->
@@ -33,11 +36,11 @@ define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
     y = object.y + 5
     new Foe(game, x, y)
   makeText = (game, object) ->
-    console.log object.properties.en
     game.add.text object.x, object.y, object.properties.en,
         font: "30px Arial"
         fill: "#ffffff"
   makeCoin = (game, object) ->
+    game.level.totalCoins +=1
     new Coin(game, object.x, object.y)
   makeEndMarker = (game, object) ->
     x = object.x + (object.width/2)

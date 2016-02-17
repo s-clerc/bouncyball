@@ -12,6 +12,7 @@ define ["Phaser" ,"Actor"], (Phaser, Actor) ->
       # Negative is towards right
       @speedSet = -200
       @kinematic = yes
+      @mass = 99999999999999999999999999999
     whenBeginContact: (a, b, c, d, e) =>
       return unless a
       direction = Math.atan2 a.x-@x, a.y-@y #rad

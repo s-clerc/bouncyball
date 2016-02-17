@@ -7,7 +7,11 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       window.p = @
       @game = game
       @player = new Player(game, 100, 200)
-      ll.load game
+        # level doesnt exist
+      unless ll.load game
+        alert "⚠︎ 404: Level cannot be loaded"
+        @error = yes
+        return @end()
       @game.map.setTileIndexCallback 2, @player.whenHitRed
       @game.input.keyboard.addKey(Phaser.Keyboard.ESC).onDown.add @end, this
       @game.physics.p2.gravity.y = 500
@@ -55,11 +59,29 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
         .appendChild stats.domElement
       @stats = stats
     update: ->
+      return if @error
       @stats.begin() if @game.global.debug
       @player.update() 
       #@game.camera.focusOnXY @player.x, 0
-      @game.scoreLabel.text = "score: " + @game.coinsCollected
+      @game.scoreLabel.text = "score: " + @player.coinsCollected
       @stats.end() if @game.global.debug
+    nextLevel: ->
+      randstars = Math.round ((@player.coinsCollected / @game.level.totalCoins) * 3)
+      console.log randstars
+      # set nr of stars for this level
+      @game.playerData[@game.level.number - 1] = randstars
+      # unlock next level
+      console.log @game.playerData
+      if @game.level.number < @game.playerData.length
+        if @game.playerData[@game.level.number] < 0
+          # currently locked (=-1)
+          @game.playerData[@game.level.number] = 0
+          # set unlocked, 0 stars
+      # and write to local storage
+      window.localStorage.setItem 'progress', JSON.stringify(@game.playerData)
+      @game.level.number += 1
+      game.state.start "play"
     end: ->
-      game.state.start "menu"
+      game.state.start "levelSelect"
+
   return exports

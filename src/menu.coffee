@@ -29,7 +29,7 @@ define ["Phaser"], (Phaser) ->
       @muteButton.frame = if @game.sound.mute then 1 else 0
       return
     start: ->
-      @game.state.start "play"
+      @game.state.start "levelSelect"
       return
   return exports
 

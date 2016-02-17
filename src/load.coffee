@@ -5,15 +5,9 @@ define ["Phaser"], (Phaser) ->
   exports.LoadState = class LoadState extends Phaser.State
     preload: ->
       # Add a loading label 
-      loadingLabel = @game.add.text(game.world.centerX, 150, "loading...",
+      loadingLabel = @game.add.text(@game.world.centerX, 150, "loading...",
         font: "30px Arial"
         fill: "#ffffff")
-      game.load.image "tileset", "assets/tileset.png"
-      game.load.tilemap "map", "assets/tilemap.json", null, Phaser.Tilemap.TILED_JSON
-      game.load.image "pixel1", "assets/pixel.png"
-      game.load.image "pixel2", "assets/cPixel.png"
-      game.load.image "pixel3", "assets/tPixel.png"
-      game.load.image "coin", "assets/coin.png"
       loadingLabel.anchor.setTo 0.5, 0.5
       # Add a progress bar
       progressBar = @game.add.sprite(game.world.centerX, 200, "progressBar")
@@ -23,6 +17,18 @@ define ["Phaser"], (Phaser) ->
       @game.load.spritesheet "mute", "assets/muteButton.png", 28, 22
       @game.load.image "circle", "assets/circle.png"
       @game.load.image "foe", "assets/foe.png"
+      @game.load.spritesheet "levelselecticons", "assets/levelselecticons.png", 96, 96
+      @game.load.image "tileset", "assets/tileset.png"
+      @game.load.image "pixel1", "assets/pixel.png"
+      @game.load.image "pixel2", "assets/cPixel.png"
+      @game.load.image "pixel3", "assets/tPixel.png"
+      @game.load.image "coin", "assets/coin.png"
+      #levels
+      numberOfLevels = 2
+      i = 1
+      while i <= numberOfLevels
+        @game.load.tilemap "level" + i, "levels/" + i + ".json", null, Phaser.Tilemap.TILED_JSON
+        i++
       # ...
       return
     create: ->

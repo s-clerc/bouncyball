@@ -3,6 +3,7 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
   exports = class Player extends Actor 
     defaultBounceSpeed: 300
     defaultMovementSpeed: 200
+    coinsCollected: 0
     constructor: (game, x, y, key, frame) ->
       @game = game
       super game, x, y, "circle"
@@ -31,10 +32,10 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         if a.sprite.tileType == "foe"
           @die()
         else if a.sprite.tileType == "coin"
-          @game.coinsCollected += 1
+          @coinsCollected += 1
           a.sprite.kill()
         else if a.sprite.tileType == "end"
-          game.state.start "menu"
+          game.state.states.play.nextLevel()
     # k is cursor keys
     update: =>
       # m is key mappings
@@ -49,7 +50,7 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         @scale.setTo(-1, 1);
       else if k.isDown m.RIGHT
         @body.velocity.x = @movementSpeed
-      else if k.isDown m.UP
+      else if k.isDown m.UP and off
         @body.velocity.y = 0
       else if (k.isDown m.SPACEBAR) and @game.global.spacebarReset
         @body.velocity.x = 0
@@ -60,6 +61,6 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       @game.emitter.y = @y;
       @game.emitter.start true, 600, null, 15
       @kill()
-      @game.time.events.add 700, @restart, this
+      @game.time.events.add 10, @restart, this
     restart: ->
       @game.state.start "play"
