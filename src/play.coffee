@@ -26,7 +26,7 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @player = new Player(game, 100, 200)
         # level doesnt exist
       unless ll.load game
-        alert "⚠︎ 404: Level cannot be loaded"
+        alert "Level cannot be loaded"
         @error = yes
         return @end()
       @game.map.setTileIndexCallback 2, @player.whenHitRed
@@ -105,10 +105,10 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       # and write to local storage
       window.localStorage.setItem 'progress', JSON.stringify(@game.playerData)
       @game.level.number += 1
-      @music.stop()
+      @music.stop() if @music
       game.state.start "play"
     end: ->
-      @music.stop()
+      @music.stop() if @music
       game.state.start "levelSelect"
 
   return exports

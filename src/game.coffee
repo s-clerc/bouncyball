@@ -26,7 +26,7 @@ require ["Phaser", "boot", "load", "menu", "play", "levelSelect"], (Phaser, boot
 # Our "globals" variable
   global = 
     score: 0
-    debug: on
+    debug: off
     width: 500
     height: 360
     spacebarReset: on

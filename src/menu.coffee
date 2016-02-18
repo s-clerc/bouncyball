@@ -22,10 +22,12 @@ define ["Phaser"], (Phaser) ->
   exports.MenuState = class MenuState extends Phaser.State
     create: ->
       # Name of the @game
+      console.log "CREATE"
       nameLabel = @game.add.text(@game.world.centerX, 80, "Better than Skype!",
         font: "50px Arial"
         fill: "#ffffff")
       nameLabel.anchor.setTo 0.5, 0.5
+      nameLabel.z = 10000000
       # How to start the @game
       startLabel = @game.add.text(@game.world.centerX, @game.world.height - 80, "press the up arrow key to start",
         font: "25px Arial"
