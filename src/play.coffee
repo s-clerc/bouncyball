@@ -23,7 +23,6 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
     create: ->
       window.p = @
       @game = game
-      @player = new Player(game, 100, 200)
         # level doesnt exist
       unless ll.load game
         alert "Level cannot be loaded"

@@ -274,6 +274,21 @@
                  "width":20,
                  "x":1620,
                  "y":320
+                }, 
+                {
+                 "height":40,
+                 "id":40,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"spawn",
+                 "visible":true,
+                 "width":40,
+                 "x":60,
+                 "y":60
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -282,7 +297,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":40,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "properties":
     {
@@ -294,7 +309,7 @@
         {
          "columns":3,
          "firstgid":1,
-         "image":"..\/tileset.png",
+         "image":"..\/assets\/tileset.png",
          "imageheight":60,
          "imagewidth":60,
          "margin":0,

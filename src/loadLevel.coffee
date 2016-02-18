@@ -15,7 +15,7 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###
-define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
+define ["Phaser", "Foe", "coin", "actor", "player"], (Phaser, Foe, Coin, Actor, Player) ->
   "use strict"
   exports = {}
   exports.load = (game) ->
@@ -46,6 +46,8 @@ define ["Phaser", "Foe", "coin", "actor"], (Phaser, Foe, Coin, Actor) ->
           makeEndMarker game, object, map, layer
         when "foe"
           makeFoe game, object, map, layer
+        when "spawn"
+          game.state.states.play.player = new Player(game, object.x, object.y)
         else
           console.warn "Undefined object type: " + object.type
   makeFoe = (game, object) ->
