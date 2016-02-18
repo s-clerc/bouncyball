@@ -1,3 +1,20 @@
+###
+  "Better than skype" a silly game
+  Copyright (C) 2016 Swissnetizen
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+###
 "use strict";
 define ["Phaser"], (Phaser) -> 
   "use strict"
@@ -23,6 +40,15 @@ define ["Phaser"], (Phaser) ->
       @game.load.image "pixel2", "assets/cPixel.png"
       @game.load.image "pixel3", "assets/tPixel.png"
       @game.load.image "coin", "assets/coin.png"
+      @game.sounds = {}
+      sounds = [
+        "coin",
+        "die",
+        "bounce"
+      ]
+      for sound in sounds
+        @game.load.audio sound + "Sound", "assets/"+sound+".wav"
+      @game.load.audio "music",  "assets/music.ogg"
       #levels
       numberOfLevels = 2
       i = 1

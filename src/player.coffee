@@ -1,3 +1,20 @@
+###
+  "Better than skype" a silly game
+  Copyright (C) 2016 Swissnetizen
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+###
 define ["Phaser", "Actor"], (Phaser, Actor) ->
   "use strict"
   exports = class Player extends Actor 
@@ -22,11 +39,15 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       else if @body.velocity.y > 0
         @body.velocity.y = -@bounceSpeed 
       # collide with killer tile
-      return unless a
+      unless a
+        @game.sounds.bounce.play()
+        return
       tile = @game.map.getTileWorldXY a.x, a.y if a
       if tile
         if tile.properties.damage > 0
           @die()
+        else 
+          @game.sounds.bounce.play()
       # not tile
       else
         if a.sprite.tileType == "foe"
@@ -34,6 +55,7 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
         else if a.sprite.tileType == "coin"
           @coinsCollected += 1
           a.sprite.kill()
+          @game.sounds.coin.play()
         else if a.sprite.tileType == "end"
           game.state.states.play.nextLevel()
     # k is cursor keys
@@ -60,7 +82,9 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       @game.emitter.x = @x 
       @game.emitter.y = @y;
       @game.emitter.start true, 600, null, 15
+      @game.sounds.die.play()
       @kill()
       @game.time.events.add 10, @restart, this
     restart: ->
+      @game.state.states.play.music.stop()
       @game.state.start "play"

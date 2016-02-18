@@ -16,17 +16,14 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ###
 "use strict"
-define ["Phaser"], (Phaser) -> 
-  "use strict"
-  exports = {}
-  exports.BootState = class BootState extends Phaser.State
-    preload: ->
-      @game.load.image "progressBar", "assets/progressBar.png"
-      return
-    create: ->
-      # Set a background color and the physics system
-      @game.stage.backgroundColor = "#3498db"
-      @game.physics.startSystem Phaser.Physics.P2JS
-      @game.state.start "load"
-      return
-  return exports
+define ["Phaser"], (Phaser) ->
+  exports =
+    TextButton: class TextButton extends Phaser.Button
+      constructor: (@game, x, y, text, style, callback, context) ->
+        #Setup text
+        @text = new Phaser.Text(@game, 0, 0, text, style)
+        #Set up button
+        super @game, x, y, @text.texture, callback, context
+        @anchor.set .5, .5
+      reloadText: ->
+        @loadTexture @text.texture

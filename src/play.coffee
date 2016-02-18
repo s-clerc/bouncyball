@@ -1,3 +1,20 @@
+###
+  "Better than skype" a silly game
+  Copyright (C) 2016 Swissnetizen
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+###
 "use strict"
 define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player, Foe, ll, stats) -> 
   "use strict"
@@ -20,6 +37,10 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @setupEmitter()
       @setupScoreText()
       @setupStats() if @game.global.debug
+      @setupSounds()
+      @music = game.add.audio "music"
+      @music.loop = on
+      @music.play()
     setupCamera: ->
       width = @game.global.width
       height = @game.global.height
@@ -58,6 +79,10 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
         .getElementById("gameDiv")
         .appendChild stats.domElement
       @stats = stats
+    setupSounds: ->
+      @game.sounds.coin = game.add.audio "coinSound"
+      @game.sounds.die = game.add.audio "dieSound"
+      @game.sounds.bounce = game.add.audio "bounceSound"
     update: ->
       return if @error
       @stats.begin() if @game.global.debug
@@ -80,8 +105,10 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       # and write to local storage
       window.localStorage.setItem 'progress', JSON.stringify(@game.playerData)
       @game.level.number += 1
+      @music.stop()
       game.state.start "play"
     end: ->
+      @music.stop()
       game.state.start "levelSelect"
 
   return exports
