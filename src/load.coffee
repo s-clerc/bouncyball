@@ -50,7 +50,7 @@ define ["Phaser"], (Phaser) ->
         @game.load.audio sound + "Sound", "assets/"+sound+".wav"
       @game.load.audio "music",  "assets/music.ogg"
       #levels
-      numberOfLevels = 2
+      numberOfLevels = 9
       i = 1
       while i <= numberOfLevels
         @game.load.tilemap "level" + i, "levels/" + i + ".json", null, Phaser.Tilemap.TILED_JSON
