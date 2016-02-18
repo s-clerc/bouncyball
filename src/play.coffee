@@ -38,9 +38,6 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @setupScoreText()
       @setupStats() if @game.global.debug
       @setupSounds()
-      @music = game.add.audio "music"
-      @music.loop = on
-      @music.play()
     setupCamera: ->
       width = @game.global.width
       height = @game.global.height
@@ -80,9 +77,12 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
         .appendChild stats.domElement
       @stats = stats
     setupSounds: ->
-      @game.sounds.coin = game.add.audio "coinSound"
-      @game.sounds.die = game.add.audio "dieSound"
-      @game.sounds.bounce = game.add.audio "bounceSound"
+                                        # key, volume, loop?, connect
+      @game.sounds.coin = game.add.audio "coinSound", 375/1000
+      @game.sounds.die = game.add.audio "dieSound", 500/1000
+      @game.sounds.bounce = game.add.audio "bounceSound", 300/1000
+      @music = game.add.audio "music", 250/1000, on
+      @music.play()
     update: ->
       return if @error
       @stats.begin() if @game.global.debug
