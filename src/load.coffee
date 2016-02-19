@@ -40,6 +40,7 @@ define ["Phaser"], (Phaser) ->
       @game.load.image "pixel2", "assets/cPixel.png"
       @game.load.image "pixel3", "assets/tPixel.png"
       @game.load.image "coin", "assets/coin.png"
+      @game.load.image "green", "assets/green.png"
       @game.sounds = {}
       sounds = [
         "coin",
@@ -50,7 +51,7 @@ define ["Phaser"], (Phaser) ->
         @game.load.audio sound + "Sound", "assets/"+sound+".wav"
       @game.load.audio "music",  "assets/music.ogg"
       #levels
-      numberOfLevels = 9
+      numberOfLevels = 12
       i = 1
       while i <= numberOfLevels
         @game.load.tilemap "level" + i, "levels/" + i + ".json", null, Phaser.Tilemap.TILED_JSON

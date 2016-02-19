@@ -54,8 +54,9 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
           @die()
         else if a.sprite.tileType == "coin"
           @coinsCollected += 1
-          a.sprite.kill()
+          @game.add.tween(a.sprite).to({rotation: 6}, 150).start()
           @game.sounds.coin.play()
+          @game.time.events.add 150, -> a.sprite.kill()
         else if a.sprite.tileType == "end"
           game.state.states.play.nextLevel()
     # k is cursor keys
@@ -64,8 +65,7 @@ define ["Phaser", "Actor"], (Phaser, Actor) ->
       k = @game.input.keyboard
       m = Phaser.Keyboard
       if (k.isDown m.RIGHT) and
-         (k.isDown m.LEFT) and 
-         @game.global.spacebarReset
+         (k.isDown m.LEFT)
         @body.velocity.x = 0
       else if k.isDown m.LEFT
         @body.velocity.x = -@movementSpeed

@@ -71,4 +71,11 @@ define ["Phaser", "Foe", "coin", "actor", "player"], (Phaser, Foe, Coin, Actor, 
     marker.body.data.gravityScale = 0
     marker.body.static = yes
     marker.tileType = "end"
+    #animate
+    yt = object.y
+    xt = object.x
+    ye = object.y + object.height
+    animates = game.add.group()
+    game.add.sprite xt, yt, "green", 0, animates
+
   exports
