@@ -328,7 +328,8 @@
                  "name":"",
                  "properties":
                     {
-                     "en":"Timing is key"
+                     "en":"Timing is key",
+                     "fr":"Le synchronisation est cl\u00e9"
                     },
                  "rotation":0,
                  "type":"text",

@@ -195,7 +195,8 @@
                  "name":"",
                  "properties":
                     {
-                     "en":"Press \u238b (ESC) to exit"
+                     "en":"Press \u238b (ESC) to exit",
+                     "fr":"Appuyez sur \u238b (ESC) pour sortir le jeux"
                     },
                  "rotation":0,
                  "type":"text",

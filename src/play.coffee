@@ -25,7 +25,7 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @game = game
         # level doesnt exist
       unless ll.load game
-        alert "Level cannot be loaded"
+        alert "Level cannot be loaded" if @game.level.number isnt 13
         @error = yes
         return @end()
       @game.map.setTileIndexCallback 2, @player.whenHitRed

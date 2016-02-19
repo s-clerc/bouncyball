@@ -82,7 +82,8 @@
                  "name":"",
                  "properties":
                     {
-                     "en":"Which way?"
+                     "en":"Which way?",
+                     "fr":"Quelle direction?"
                     },
                  "rotation":0,
                  "type":"text",

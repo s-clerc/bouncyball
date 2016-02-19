@@ -60,6 +60,54 @@
                  "width":0,
                  "x":820,
                  "y":140
+                }, 
+                {
+                 "height":40,
+                 "id":51,
+                 "name":"",
+                 "properties":
+                    {
+                     "en":"Hope you enjoyed the game!",
+                     "fr":"J'esp\u00e8re que vous avez trouver le jeu fun ! "
+                    },
+                 "rotation":0,
+                 "type":"text",
+                 "visible":true,
+                 "width":400,
+                 "x":500,
+                 "y":220
+                }, 
+                {
+                 "height":40,
+                 "id":56,
+                 "name":"",
+                 "properties":
+                    {
+                     "en":"Leave a comment!",
+                     "fr":"Laissez un commentaire !"
+                    },
+                 "rotation":0,
+                 "type":"text",
+                 "visible":true,
+                 "width":400,
+                 "x":500,
+                 "y":260
+                }, 
+                {
+                 "height":40,
+                 "id":57,
+                 "name":"",
+                 "properties":
+                    {
+                     "en":"at swissnetizen.ch",
+                     "fr":"\u00e0 swissnetizen.ch"
+                    },
+                 "rotation":0,
+                 "type":"text",
+                 "visible":true,
+                 "width":400,
+                 "x":500,
+                 "y":300
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -68,7 +116,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":51,
+ "nextobjectid":58,
  "orientation":"orthogonal",
  "properties":
     {

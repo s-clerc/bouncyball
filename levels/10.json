@@ -52,7 +52,8 @@
                  "name":"",
                  "properties":
                     {
-                     "en":"Try hitting the wall!"
+                     "en":"Try hitting the wall!",
+                     "fr":"Essayez de rebonir contre la mur"
                     },
                  "rotation":0,
                  "type":"text",
