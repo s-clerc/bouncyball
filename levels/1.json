@@ -23,6 +23,7 @@
                  "properties":
                     {
                      "en":"Use \u2190 and \u2192 to move",
+                     "eo":"Uzu \u2190 kaj \u2192 por movi",
                      "fr":"Utilise \u2190 et \u2192 pour bouger"
                     },
                  "rotation":0,
@@ -39,6 +40,7 @@
                  "properties":
                     {
                      "en":"Red things = bad",
+                     "eo":"A\u0135oj ru\u011daj = malbone",
                      "fr":"Les choses rouges sont mauvaise"
                     },
                  "rotation":0,
@@ -85,6 +87,7 @@
                  "properties":
                     {
                      "en":"Coins are good",
+                     "eo":"Moneroj estas bone",
                      "fr":"Les pi\u00e8ces sont bonnes"
                     },
                  "rotation":0,
@@ -196,6 +199,7 @@
                  "properties":
                     {
                      "en":"Press \u238b (ESC) to exit",
+                     "eo":"Premu \u238b (ESC) por eliri",
                      "fr":"Appuyez sur \u238b (ESC) pour sortir le jeux"
                     },
                  "rotation":0,
