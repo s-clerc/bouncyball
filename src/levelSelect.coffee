@@ -30,6 +30,7 @@ define ["Phaser"], (Phaser) ->
       #@game.add.bitmapText 256, 24, "font72", "Select a level!", 48
       @createLevelIcons()
       @animateLevelIcons()
+      @setupCheatCode()
       @game.input.keyboard.addKey(Phaser.Keyboard.ESC).onDown.add @end, this
       return
     initProgressData: ->
@@ -152,6 +153,27 @@ define ["Phaser"], (Phaser) ->
         @game.add.tween(IconGroup).to { y: y - 600 }, 500, Phaser.Easing.Back.Out, true, i * 40
         i++
       return
+    setupCheatCode: ->
+      upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP)
+      downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN)
+      leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT)
+      rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)
+      tabKey = game.input.keyboard.addKey(Phaser.Keyboard.TAB)
+      enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER)
+      upKey.onUp.addOnce ->
+        upKey.onUp.addOnce ->
+          downKey.onUp.addOnce ->
+            downKey.onUp.addOnce ->
+              leftKey.onUp.addOnce ->
+                rightKey.onUp.addOnce ->
+                  leftKey.onUp.addOnce ->
+                    rightKey.onUp.addOnce ->
+                      tabKey.onUp.addOnce ->
+                        enterKey.onUp.addOnce ->
+                          console.log "CHEATER"
+                          game.playerData = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                          window.localStorage.setItem 'progress', JSON.stringify(game.playerData)
+                          game.state.start "play"
     onLevelSelected: (levelNumber) ->
       # pass levelNumber variable to "Game" state
       @game.level.number = levelNumber
