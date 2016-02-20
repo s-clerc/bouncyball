@@ -55,7 +55,7 @@ define ["Phaser", "Foe", "coin", "actor", "player"], (Phaser, Foe, Coin, Actor, 
     y = object.y + 5
     new Foe(game, x, y)
   makeText = (game, object) ->
-    game.add.text object.x, object.y, object.properties.en,
+    game.add.text object.x, object.y, object.properties[game.lang],
         font: "30px Arial"
         fill: "#ffffff"
   makeCoin = (game, object) ->

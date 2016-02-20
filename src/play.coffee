@@ -25,7 +25,7 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @game = game
         # level doesnt exist
       unless ll.load game
-        alert "Level cannot be loaded" if @game.level.number isnt 13
+        alert @game.text.loaderror if @game.level.number isnt 13
         @error = yes
         return @end()
       @game.map.setTileIndexCallback 2, @player.whenHitRed
@@ -60,8 +60,8 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @game.emitter = emitter
     setupScoreText: ->
       @game.scoreLabel = 
-        game.add.text 400, 1, "score: 0",
-          font: "20px Arial"
+        game.add.text 375, 2, @game.text.score + ": 0",
+          font: "16px Arial"
           fill: "#ffffff"
       @game.scoreLabel.fixedToCamera = on
     setupStats: ->
@@ -87,7 +87,7 @@ define ["Phaser", "player", "foe", "loadLevel", "../stats.min"], (Phaser, Player
       @stats.begin() if @game.global.debug
       @player.update() 
       #@game.camera.focusOnXY @player.x, 0
-      @game.scoreLabel.text = "score: " + @player.coinsCollected
+      @game.scoreLabel.text = @game.text.score + ": " + @player.coinsCollected
       @stats.end() if @game.global.debug
     nextLevel: ->
       randstars = Math.round ((@player.coinsCollected / @game.level.totalCoins) * 3)

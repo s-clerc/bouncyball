@@ -41,6 +41,7 @@ define ["Phaser"], (Phaser) ->
       @game.load.image "pixel3", "assets/tPixel.png"
       @game.load.image "coin", "assets/coin.png"
       @game.load.image "green", "assets/green.png"
+      @game.load.json "l10n", "l10n.json"
       @game.sounds = {}
       sounds = [
         "coin",
@@ -59,6 +60,7 @@ define ["Phaser"], (Phaser) ->
       # ...
       return
     create: ->
+      @game.l10n = game.cache.getJSON "l10n"
       @game.state.start "menu"
       return
   return exports

@@ -158,8 +158,8 @@ define ["Phaser"], (Phaser) ->
       downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN)
       leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT)
       rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)
-      tabKey = game.input.keyboard.addKey(Phaser.Keyboard.TAB)
-      enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER)
+      aKey = game.input.keyboard.addKey(Phaser.Keyboard.A)
+      bKey = game.input.keyboard.addKey(Phaser.Keyboard.B)
       upKey.onUp.addOnce ->
         upKey.onUp.addOnce ->
           downKey.onUp.addOnce ->
@@ -168,8 +168,8 @@ define ["Phaser"], (Phaser) ->
                 rightKey.onUp.addOnce ->
                   leftKey.onUp.addOnce ->
                     rightKey.onUp.addOnce ->
-                      tabKey.onUp.addOnce ->
-                        enterKey.onUp.addOnce ->
+                      bKey.onUp.addOnce ->
+                        aKey.onUp.addOnce ->
                           console.log "CHEATER"
                           game.playerData = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
                           window.localStorage.setItem 'progress', JSON.stringify(game.playerData)

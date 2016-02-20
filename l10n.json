@@ -2,16 +2,19 @@
   "en": {
     "name" : "Better than skype!",
     "upstart" : "Press ↑ to start",
-    "loaderror" : "Error loading level"
+    "loaderror" : "Error loading level",
+    "score" : "score"
   },
   "fr": {
     "name" : "Mieux que skype!",
     "upstart" : "Appuyez sur ↑ pour commencer",
-    "loaderror" : "Impossible de ouvre le niveau"
+    "loaderror" : "Impossible de ouvre le niveau",
+    "score" : "points"
   },
   "eo": {
     "name" : "Pli bona ol Skipio!",
     "upstart" : "Premu ↑ por eki!",
-    "loaderror" : "Erraro kun ŝulti la nivelon"
+    "loaderror" : "Erraro kun ŝulti la nivelon",
+    "score" : "poentaro"
   }
 }
