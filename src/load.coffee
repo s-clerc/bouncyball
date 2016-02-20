@@ -42,6 +42,7 @@ define ["Phaser"], (Phaser) ->
       @game.load.image "coin", "assets/coin.png"
       @game.load.image "green", "assets/green.png"
       @game.load.json "l10n", "l10n.json"
+      @game.load.image "swiss", "assets/swiss.png"
       @game.sounds = {}
       sounds = [
         "coin",

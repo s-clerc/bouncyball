@@ -33,6 +33,12 @@ define ["Phaser"], (Phaser) ->
       startLabel = @game.add.text(@game.world.centerX, @game.world.height - 80, @game.text.upstart,
         font: "25px Arial"
         fill: "#ffffff")
+      # SUISSE!
+      swissmade = @game.add.text(20, @game.world.height - 20, "swissmade",
+        font: "16px Arial"
+        fill: "#ffffff")
+      swissflag = @game.add.sprite 100, @game.world.height - 20, "swiss"
+      # SUISSE !
       startLabel.anchor.setTo 0.5, 0.5
       @game.add.tween(startLabel).to({ angle: -2 }, 500).to({ angle: 2 }, 500).loop().start()
       # Add a mute button

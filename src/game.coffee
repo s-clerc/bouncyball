@@ -29,7 +29,7 @@ require ["Phaser", "boot", "load", "menu", "play", "levelSelect"], (Phaser, boot
     debug: off
     width: 500
     height: 360
-    spacebarReset: on
+    spacebarReset: off
     autoReset: off
   window.game = new Phaser.Game(global.width, global.height, Phaser.AUTO, "gameDiv")
   game.global = global
