@@ -21,8 +21,9 @@ define ["Phaser"], (Phaser) ->
   exports = {}
   exports.MenuState = class MenuState extends Phaser.State
     create: ->
-      # Name of the @game
-      @game.lang = "fr"
+      ## **choose language**
+      @game.lang = "en" ## <---
+      ##
       @game.text = @game.l10n[@game.lang]
       nameLabel = @game.add.text(@game.world.centerX, 80, @game.text.name,
         font: "50px Arial"
