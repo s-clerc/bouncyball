@@ -26,7 +26,6 @@ define ["Phaser"], (Phaser) ->
     create: ->
       @game.level = 
         totalCoins : 0
-      @game.stage.backgroundColor = 0x80a0ff
       #@game.add.bitmapText 256, 24, "font72", "Select a level!", 48
       @createLevelIcons()
       @animateLevelIcons()
