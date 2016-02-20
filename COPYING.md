@@ -1,15 +1,41 @@
+# Summary
 * This program uses the Phaser.io framework written by Richard Davey underthe MIT license. 
 * All code in the src/ folder is under the GPL≥3; Copyright swissnetizen 2016.
 * All assets in assets/ **except music.ogg** are under CC-BY-SA; Copyright swissnetizen 2016.
+* There are two extra terms for the GPL
 => This whole program is licensed under the GPL≥3:
-                    GNU GENERAL PUBLIC LICENSE
+
+## Additional Terms
+### More Permission
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+#### License notice:
+    The JavaScript code in this page is free software: you can
+    redistribute it and/or modify it under the terms of the GNU
+    General Public License (GNU GPL) as published by the Free Software
+    Foundation, either version 3 of the License, or (at your option)
+    any later version.  The code is distributed WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS
+    FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+    As additional permission under GNU GPL version 3 section 7, you
+  may distribute non-source (e.g., minimized or compacted) forms of
+  that code without the copy of the GNU GPL normally required by
+  section 4, provided you include this license notice and a URL
+  ethrough which recipients can access the Corresponding Source.
+### Attribution Form
+For my purposes, to achieve proper attribution all that must be done is to link to the original source using the permalink (i.e. no goo.gl/Ak4). When a URL shortener is used, “swissnetizen.ch” must be clearly visible next the attribution.
+
+#                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
-                            Preamble
+##                            Preamble
 
   The GNU General Public License is a free, copyleft license for
 software and other kinds of works.
@@ -72,9 +98,9 @@ patents cannot be used to render the program non-free.
   The precise terms and conditions for copying, distribution and
 modification follow.
 
-                       TERMS AND CONDITIONS
+##                       TERMS AND CONDITIONS
 
-  0. Definitions.
+###  0. Definitions.
 
   "This License" refers to version 3 of the GNU General Public License.
 
@@ -113,7 +139,7 @@ work under this License, and how to view a copy of this License.  If
 the interface presents a list of user commands or options, such as a
 menu, a prominent item in the list meets this criterion.
 
-  1. Source Code.
+###  1. Source Code.
 
   The "source code" for a work means the preferred form of the work
 for making modifications to it.  "Object code" means any non-source
@@ -155,7 +181,7 @@ Source.
   The Corresponding Source for a work in source code form is that
 same work.
 
-  2. Basic Permissions.
+###  2. Basic Permissions.
 
   All rights granted under this License are granted for the term of
 copyright on the Program, and are irrevocable provided the stated
@@ -180,7 +206,7 @@ your copyrighted material outside their relationship with you.
 the conditions stated below.  Sublicensing is not allowed; section 10
 makes it unnecessary.
 
-  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+###  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
 
   No covered work shall be deemed part of an effective technological
 measure under any applicable law fulfilling obligations under article
