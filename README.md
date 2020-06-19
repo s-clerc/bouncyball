@@ -3,6 +3,7 @@ This game is based on the interesting mechanic of having the player constantly b
 With these controls the player is left to navigate platformer levels full of hazards.
 Another interesting design choice was allowing collisions off coins, enabling more creative platforming with the limited control set.
 
+**[Play it online right now!](https://swissnetizen.itch.io/better-than-skype)**
 # Tech stack
 The game is a simple single-player game and as the architecture is very simple. 
 Phaser 2 is used to play the game, being transpiled from CoffeeScript.
